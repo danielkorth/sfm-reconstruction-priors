@@ -1,0 +1,7 @@
+# @package _global_
+
+defaults:
+  - default
+
+data:
+  scannet_path: ${paths.data_dir}/scannetppv2/data

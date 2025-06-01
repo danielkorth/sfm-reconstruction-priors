@@ -1,0 +1,8 @@
+# @package _global_
+
+data:
+  num_images: 10 # either num images or pct_images. If num_images > 0, then it is used, otherwise pct
+  pct_images: 5
+  scannet_path: ???
+  scene_id: fe5fe0a8a4
+  use_masks: True

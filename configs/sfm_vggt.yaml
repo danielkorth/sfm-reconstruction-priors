@@ -1,0 +1,12 @@
+defaults:
+  - data: v2_single
+  - /hydra/callbacks:
+      - gitsha
+  - paths: default
+  - extras: default
+  - logger: null
+  - visualizer: rerun # necessary to keep, values will be injected to the reconstruction
+  - model: vggt
+  - _self_
+
+seed: 43

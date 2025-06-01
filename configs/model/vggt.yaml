@@ -1,0 +1,8 @@
+# @package _global_
+
+pointmap_type: two_view
+
+model:
+  _target_: src.external.vggt.vggt_wrapper.VGGTWrapper
+  model_path: ${paths.checkpoints_dir}/vggt/model.pt
+  device: cuda

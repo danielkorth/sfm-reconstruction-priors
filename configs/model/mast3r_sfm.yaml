@@ -1,0 +1,20 @@
+# @package _global_
+
+model:
+  _target_: src.external.mast3r.MASt3RSfMWrapper
+  model_name: ${paths.checkpoints_dir}/mast3r/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth
+  device: cuda
+  image_size: [512, 384]
+  cache_dir: ${paths.cache_dir}/mast3r_sfm
+  lr1: 0.2
+  niter1: 500
+  lr2: 0.02
+  niter2: 500
+  matching_conf_thr: 5.0
+  shared_intrinsics: True
+  optim_level: refine+depth
+  # Scene graph parameters
+  scenegraph_type: complete
+  winsize: None
+  win_cyclic: False
+  refid: None

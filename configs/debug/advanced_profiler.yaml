@@ -1,0 +1,15 @@
+# @package _global_
+
+# runs with execution time profiling
+
+defaults:
+  - default
+
+trainer:
+  max_epochs: 2
+  profiler:
+    _target_: lightning.pytorch.profilers.AdvancedProfiler
+    dirpath: ${paths.output_dir}/profiler
+    filename: advanced_profiler
+
+test: False

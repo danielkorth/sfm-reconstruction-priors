@@ -1,0 +1,22 @@
+_target_: src.opt.optimizer.SparseLevenbergMarquardt
+name: sparse_lm
+
+# Optimizer parameters
+mu: 1e-4 # Initial damping parameter
+nu: 2 # Factor to increase damping when step is rejected
+min_diagonal: 1e-6 # Minimum value for diagonal damping
+max_diagonal: 1e32 # Maximum value for diagonal damping
+
+# Stopping criterion parameters (for second-order methods)
+max_iterations: 100 # Maximum number of iterations before stopping
+max_inner_iterations: 20 # Maximum iterations for inner loop
+gradient_threshold: 1e-9 # Maximum gradient value for convergence
+step_size_threshold: 1e-9 # Threshold for step size
+rel_decrease_threshold: 1e-6 # Minimum relative decrease in cost
+
+# Linear Solver
+linear_solver:
+  _target_: src.opt.linear_solve.SparseConjugateGradientSolver
+  max_iterations: 100
+  tolerance: 1e-10
+  use_preconditioner: true

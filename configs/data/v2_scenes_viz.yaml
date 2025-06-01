@@ -1,0 +1,13 @@
+# @package _global_
+
+defaults:
+  - default
+  - scannetppv2
+
+data:
+  scene_id:
+    - ce12db9e81
+    - 53bd1b3b05
+    - 206bccc898
+    - 8fc40ba77b
+    - 894dbd41f1

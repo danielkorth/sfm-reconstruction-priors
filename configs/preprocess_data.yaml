@@ -1,0 +1,5 @@
+defaults:
+  - _self_
+  - data: scannetppv2
+  - paths: default
+  - extras: default

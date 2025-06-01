@@ -1,0 +1,12 @@
+[submodule "scannetpp_toolbox"]
+	path = scannetpp_toolbox
+	url = https://github.com/scannetpp/scannetpp
+[submodule "external/spsg"]
+	path = external/spsg
+	url = git@github.com:magicleap/SuperGluePretrainedNetwork.git
+[submodule "external/mast3r"]
+	path = external/mast3r
+	url = https://github.com/naver/mast3r
+[submodule "external/vggt"]
+	path = external/vggt
+	url = git@github.com:facebookresearch/vggt.git

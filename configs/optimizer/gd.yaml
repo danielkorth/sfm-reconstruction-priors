@@ -1,0 +1,10 @@
+_target_: src.opt.optimizer.GradientDescent
+name: gd
+step_size: 1e-3 # not relevant since ternary linesearch is used
+
+# Stopping criterion parameters
+max_iterations: 1000 # Maximum number of iterations before stopping
+rel_decrease_threshold: 1e-6 # Minimum relative decrease in cost
+patience: 10 # Number of iterations with small decrease before stopping
+gradient_norm_threshold: 1e-5 # Minimum gradient norm
+param_change_threshold: 1e-5 # Minimum change in parameters

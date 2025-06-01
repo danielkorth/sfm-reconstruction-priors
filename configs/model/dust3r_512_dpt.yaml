@@ -1,0 +1,14 @@
+# @package _global_
+
+pointmap_type: two_view
+
+model:
+  _target_: src.external.mast3r.DUSt3RWrapper
+  model_name: ${paths.checkpoints_dir}/dust3r/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth
+  device: cuda
+  # Global optimization parameters
+  go_niter: 1000
+  go_lr: 0.01
+  go_init: "mst"
+  go_schedule: "cosine"
+  go_device: "cpu"

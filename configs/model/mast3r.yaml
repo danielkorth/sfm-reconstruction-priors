@@ -1,0 +1,16 @@
+# @package _global_
+
+pointmap_type: two_view
+
+model:
+  _target_: src.external.mast3r.MASt3RWrapper
+  model_name: ${paths.checkpoints_dir}/mast3r/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth
+  device: cuda
+  subsample: 8
+  border: 3
+  # Global optimization parameters
+  go_niter: 1000
+  go_lr: 0.01
+  go_init: "mst"
+  go_schedule: "cosine"
+  go_device: "cpu"

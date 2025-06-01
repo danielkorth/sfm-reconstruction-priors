@@ -1,0 +1,28 @@
+# @package _global_
+
+# overfits to ??? datapoints
+
+task_name: "overfit"
+
+# defaults:
+#   - default
+
+trainer:
+  max_epochs: 1000
+  overfit_batches: 1
+  accelerator: gpu
+  detect_anomaly: false
+
+callbacks:
+  early_stopping:
+    _target_: lightning.pytorch.callbacks.EarlyStopping
+    monitor: "train/loss"
+    mode: "min"
+    stopping_threshold: 0.0009 # depends on the problem - should be very low
+
+data:
+  batch_size: ??? # determines how much you want to overfit
+  num_workers: 1
+  pin_memory: True
+
+test: false

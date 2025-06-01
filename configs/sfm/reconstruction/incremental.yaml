@@ -1,0 +1,78 @@
+path: ${paths.output_dir}
+# Initialization
+initialization:
+  criterion: tracks # what criterion to use to find initial pair: matches | tracks | tracksgt2
+  delete_failed_tracks: false # whether to remove tracks completely from the reconstruction if they did not pass geometric verification / chirality condition of this step
+  min_median_triangulation_angle: 8 # minimum median triangulation angle for valid initialization
+  min_inlier_count: 40 # minimum number of inliers for valid initialization (chirality + triangulation angle as condition)
+  max_tries: 5 # maximum number of tries to find a valid initialization
+  use_tracks: false # whether to use all tracks for relative pose estimation or only two-view matches
+  max_reprojection_error: 4.0 # maximum reprojection error for valid initialization
+  min_triangulation_angle: 3.0 # minimum triangulation angle for valid initialization
+
+# Global Optimization
+global_optimization:
+  device: cpu
+  optimizer: null # injected in main config
+  energy: null # injected in main config
+  image_space_residuals: true
+  logging_frequency: 10
+
+  # --- everything pointmap related ---
+  # rigid alignment for pointmaps
+  rigid_alignment_ransac: false
+  ransac_min_points: 3
+  ransac_iterations: 100
+  ransac_threshold: 0.1 # (this means 10 cm roughly)
+
+  dust3r_min_tracks: 3
+
+  # what to optimize for
+  opt_poses: True # whether to optimize for poses or not
+  opt_scale: False # whether to optimize for scale parameter or to keep it fixed
+
+  # how to handle pointmaps
+  dust3r_average_pointmaps: true # whether to average pointmaps or not
+  dust3r_bilinear_interpolation: false # whether to use bilinear interpolation or not
+
+  use_confmaps: false # uses confmaps for averaging, alignment and weighting
+
+  # dust3r filter tracks
+  pointmaps_align_only_inliers: false # whether to only align inliers (determined by ransac/alignment threshold)
+  pointmaps_align_threshold: 1 # threshold for filtering tracks
+
+  pointmaps_filter_tracks: false # whether to filter tracks from WHOLE reconstruction
+  pointmaps_filter_tracks_threshold: 0.1 # threshold for filtering tracks
+
+  # --- end of pointmap related stuff ---
+
+# Global Filtering
+global_filtering:
+  filter_tracks: true # whether to filter tracks after bundle adjustment
+  filter_max_reproj_error: 8 # colmap.mapper.filter_max_reproj_error
+  filter_min_triangulation_angle: 1.5 # If the triangulatian angle for at least one of the pairs is above this value, the track is kept
+  filter_remove_from_reconstruction: false # if triangulation failed for a track, should you remove it from the reconstruction altogether?
+  filter_remove_max_reprojection_failed_from_reconstruction: false # if triangulation failed for a track, should you remove it from the reconstruction altogether?
+
+# Image Registration
+image_registration:
+  next_best_view_criterion: tracks
+  pnp:
+    reprojection_error: 8 # in pixels
+    confidence: 0.99
+    iterations_count: 100
+    remove_outliers: false # whether to remove outliers track based on the PnP problem.
+    deactivate_outliers: true # whether to deactivate outliers track based on the PnP problem.
+
+# Triangulation
+triangulation:
+  triangulation_method: multiview # multiview | pairwise
+  min_median_triangulation_angle: 1.5
+  max_mean_reprojection_error: 8
+  remove_failed_from_reconstruction: false # if triangulation failed for a track, should you remove it from the reconstruction altogether?
+  remove_max_reprojection_failed_from_reconstruction: false # if triangulation failed for a track, should you remove it from the reconstruction altogether?
+
+# Other / Logging / Visualization
+rerun_log_rec: ${rerun_log_rec}
+rerun_log_opt_steps: ${rerun_log_opt_steps}
+rerun_log_pointmaps_ransac: ${rerun_log_pointmaps_ransac}

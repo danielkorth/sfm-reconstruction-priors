@@ -1,0 +1,6 @@
+# @package _global_
+
+rerun_log_rec: False # reconstruction
+rerun_log_opt_steps: False # during optimization
+rerun_log_pointmaps_ransac: False # ransac
+rerun_log_final_reconstruction: False # final reconstruction

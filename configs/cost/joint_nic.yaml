@@ -1,0 +1,32 @@
+# @package _global_
+
+# Modular Combined Cost Function Configuration
+cost:
+  _target_: src.opt.cost.CompositeCostFunction
+  desc: "combined_nic"
+  scale_jac: true
+  dust3r_weight: 1.0
+  weights:
+    - 1.
+    - ${cost.dust3r_weight}
+  cauchy_scale: 550 # should be a multiple of the squared focal length for better inperpretation
+
+  # List of cost functions to combine
+  cost_functions:
+    # BA cost function
+    - _target_: src.opt.cost.BACostFunction
+      loss_function:
+        _target_: src.opt.loss.SquaredLoss
+        loss_function:
+          _target_: src.opt.loss.CauchyLoss
+          scale: ${cost.cauchy_scale} # should be a multiple of the squared focal length for better inperpretation
+      chunk_size: null
+      sparse_jac: true
+      image_space_residuals: false
+
+    # DUSt3R cost function
+    - _target_: src.opt.cost.DUSt3RCostFunction
+      loss_function:
+        _target_: src.opt.loss.SquaredLoss
+      chunk_size: null
+      sparse_jac: true

@@ -1,0 +1,58 @@
+# @package _global_
+
+defaults:
+  - default
+  - scannetppv2
+
+data:
+  scene_id:
+    - 546292a9db
+    - c08d1d52b7
+    - a23f391ba9
+    - d14b81c0c2
+    - e6372539da
+    - c40466a844
+    - 81a82c3618
+    - cc0aa81452
+    - ce12db9e81
+    - 02c2ddee2a
+    - 7692b88644
+    - 0b0bb941b7
+    - 53bd1b3b05
+    - dfa70fb232
+    - 17268bec90
+    - d240136ce4
+    - fe5fe0a8a4
+    - 8e22c48c20
+    - 0c7962bd64
+    - 442b144761
+    - 894dbd41f1
+    - a5859cfd40
+    - 206bccc898
+    - 2489b7f4fe
+    - 5b0a310211
+    - 29b18b8c4f
+    - 0e900bcc5c
+    - 06b5863f73
+    - 8fc40ba77b
+    - 21c5ee0ca5
+    - 79eb3fbc63
+    - 15c4aa5bbb
+    - 652d9cb0d7
+    - 2b71155e0d
+    - e3ef8b690b
+    - 39580e2a43
+    - 120acffd90
+    - 08bd80ce2a
+    - 20ff72df6e
+    - 734bd1a97e
+    - 8c3169b088
+    - 4e0b8cbd33
+    - bf50f418ba
+    - 1c7a683c92
+    - abb6639ceb
+    - 99eae0b1f8
+    - 13b4efaf62
+    - 603964346e
+    - 1fb6538f81
+    - 511061232

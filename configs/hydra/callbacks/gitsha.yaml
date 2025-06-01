@@ -1,0 +1,6 @@
+# @package _global_
+
+hydra:
+  callbacks:
+    gitsha:
+      _target_: src.utils.callbacks.GitSHACallback

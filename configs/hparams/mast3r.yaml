@@ -1,0 +1,18 @@
+# @package _global_
+
+# hparams for the final results
+
+sfm:
+  feature_matching:
+    pair:
+      geometric_verification:
+        max_pixel_distance: 1.5
+      max_verified_matches: 256
+  reconstruction:
+    global_filtering:
+      filter_max_reproj_error: 2
+    image_registration:
+      pnp:
+        reprojection_error: 2
+    triangulation:
+      max_mean_reprojection_error: 2

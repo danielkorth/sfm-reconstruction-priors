@@ -1,0 +1,14 @@
+# @package _global_
+
+# Modular DUSt3R Point-to-Point Cost Function Configuration
+cost:
+  _target_: src.opt.cost.DUSt3RCostFunction
+  desc: "dust3r"
+
+  # Loss function with modular composition
+  loss_function:
+    _target_: src.opt.loss.SquaredLoss
+
+# Computation parameters
+chunk_size: null # Chunk size for batched operations
+sparse_jac: true # Whether to use sparse jacobians, linked to optimizer config

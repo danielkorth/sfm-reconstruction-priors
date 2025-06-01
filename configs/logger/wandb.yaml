@@ -1,0 +1,8 @@
+# @package _global_
+logger:
+  project: "guided_research"
+  entity: "korth"
+  group: debug
+  mode: "online"
+  dir: ${paths.output_dir}
+  reinit: true

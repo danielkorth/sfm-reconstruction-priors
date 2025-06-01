@@ -1,0 +1,29 @@
+name: sift
+### keypoint & descriptors
+view:
+  parameterization: rotvec
+  descriptor: rootsift
+  mask: ${data.use_masks}
+  mask_blur_iterations: 1
+
+### pairwise matching
+pair:
+  sift_distance_metric: euclidean
+  sift_lowe_ratio: 0.8
+  sift_max_distance: 1.0
+  min_matches: 20 # minimal amount of matches after ratio test to do geometric verification
+  max_verified_matches: 1024
+  repeat_geometric_verification: False # whether to repeat gemoetric verification: this can sometimes remove some obvious mismatches
+  geometric_verification:
+    kind: essential
+    prob: 0.999
+    max_pixel_distance: 4. # inlier if pixel distance is <= 1
+    min_inlier_ratio: 0.25
+  spurious_matches_keep_one_to_one: True # after geimetric verification, there can still be spurious matches. whether to keep the first match or remove all
+  min_matches_after_verification: 15 # minimal amount of matches after geometric verification to be considered a local match (between two images)
+  symmetric_matching: False # New option for symmetric matching
+
+### matching
+parallel: True
+
+min_track_length: 2

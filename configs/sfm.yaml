@@ -1,0 +1,31 @@
+defaults:
+  - data: v2_single
+  - /hydra/callbacks:
+      - gitsha
+  - cost: ba
+  - optimizer: gd
+  - paths: default
+  - extras: default
+  - sfm/feature_matching: mast3r
+  - sfm/reconstruction: incremental
+  - logger: null
+  - model: dust3r_512_dpt
+  - debug: null
+  - experiment: null
+  - visualizer: rerun # necessary to keep, values will be injected to the reconstruction
+  - hparams: null
+  - _self_
+
+seed: 43
+use_precomputed_matches: True
+save_matches_and_images: True
+
+device: cpu
+
+sfm:
+  reconstruction:
+    global_optimization:
+      optimizer: ${optimizer}
+      cost: ${cost}
+      device: ${device}
+    path: ${paths.output_dir}

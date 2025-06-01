@@ -1,0 +1,9 @@
+# https://www.tensorflow.org/tensorboard/
+
+tensorboard:
+  _target_: torch.utils.tensorboard.SummaryWriter
+  log_dir: "${paths.output_dir}/tensorboard/"
+  purge_step: 100
+  max_queue: 10
+  flush_secs: 120
+  filename_suffix: ""

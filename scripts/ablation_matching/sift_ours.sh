@@ -1,0 +1,13 @@
+#! /bin/bash
+
+python src/structure_from_motion.py -m \
+    data=v2_10scenes_2 \
+    cost=combined_similar_scale_conf \
+    sfm/feature_matching=sift \
+    data.num_images=15 \
+    cost.dust3r_weight=0.005 \
+    sfm.reconstruction.global_optimization.rigid_alignment_ransac=True \
+    sfm.reconstruction.global_optimization.ransac_threshold=0.1 \
+    sfm.reconstruction.global_optimization.ransac_iterations=100 \
+    sfm.reconstruction.global_optimization.pointmaps_align_only_inliers=True \
+    sfm.reconstruction.global_optimization.use_confmaps=True

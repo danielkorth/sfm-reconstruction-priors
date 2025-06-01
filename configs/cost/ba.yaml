@@ -1,0 +1,19 @@
+# @package _global_
+
+# Modular Bundle Adjustment Cost Function Configuration
+cost:
+  _target_: src.opt.cost.BACostFunction
+  desc: "ba"
+
+  reduction: "mean" # not necessary, but to make it more comparable to other costs (using line search anyways)
+
+  # Loss function with modular composition - read from OUTSIDE TO INSIDE
+  loss_function:
+    _target_: src.opt.loss.SquaredLoss
+    loss_function:
+      _target_: src.opt.loss.CauchyLoss # Robust loss function for outlier handling
+
+  # Computation parameters
+  chunk_size: null # Chunk size for batched operations
+  sparse_jac: true # Whether to use sparse jacobians, linked to optimizer config
+  image_space_residuals: true # Whether residuals are in image space

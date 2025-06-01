@@ -1,0 +1,44 @@
+name: spsg
+
+### keypoint & descriptors
+view:
+  parameterization: rotvec
+  descriptor: null
+  mask: False
+  mask_blur_iterations: 0
+  resize: ${sfm.feature_matching.resize}
+
+superglue_wrapper:
+  _target_: src.external.spsg.SuperGlueWrapper
+  config:
+    # SuperGlue configuration
+    superglue:
+      weights: indoor # SuperGlue weights ('indoor' or 'outdoor')
+      sinkhorn_iterations: 20
+      match_threshold: 0.2
+
+    # SuperPoint configuration
+    superpoint:
+      max_keypoints: 1024
+      keypoint_threshold: 0.005
+      nms_radius: 4
+
+pair:
+  min_matches: 20
+  max_verified_matches: 1024
+  repeat_geometric_verification: False
+  geometric_verification:
+    kind: essential
+    prob: 0.999
+    max_pixel_distance: 4.
+    min_inlier_ratio: 0.25
+  min_matches_after_verification: 15
+  spurious_matches_keep_one_to_one: True
+  symmetric_matching: False
+
+# Optional parameters
+resize: [640] # recommended for indoor scenes ([-1] for no resize)
+resize_float: false
+overwrite: true # whether to overwrite existing keypoints and matches
+
+min_track_length: 2

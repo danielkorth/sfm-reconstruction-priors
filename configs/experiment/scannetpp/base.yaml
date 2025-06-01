@@ -1,0 +1,29 @@
+# @package _global_
+
+# goal of this experiment: reproduce notebook results
+
+# to execute this experiment run
+# python src/optimize_ba.py experiment=synthetic_scenes/optimize_all
+
+defaults:
+  - override /data: scannetpp
+  - override /optimizer: gd
+
+tags: ["bundle_adjustment", "scannetpp", "optimize_all"]
+
+data:
+  scene_id: "0a7cc12c0e"
+
+seed: 42
+
+max_iter: 1000
+
+log_over_time: False
+logging_frequency: 1
+
+camera:
+  rotation_parameterization: rotvec
+  fix_first_camera: True
+  fix_first_point: False
+
+resect_intersect: False

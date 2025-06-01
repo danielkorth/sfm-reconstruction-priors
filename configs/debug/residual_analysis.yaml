@@ -1,0 +1,5 @@
+# @package _global_
+
+sfm:
+  reconstruction:
+    analyze_residuals: True

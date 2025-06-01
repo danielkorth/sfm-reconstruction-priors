@@ -1,0 +1,6 @@
+# @package _global_
+
+_target_: src.opt.linear_solve.ConjugateGradientSolver
+max_iterations: 100
+tolerance: 1e-10
+use_preconditioner: true

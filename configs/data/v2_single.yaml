@@ -1,0 +1,9 @@
+# @package _global_
+
+defaults:
+  - default
+  - scannetppv2
+
+data:
+  scene_id: 546292a9db
+  num_images: 10

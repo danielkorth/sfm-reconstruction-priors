@@ -1,0 +1,14 @@
+defaults:
+  - data: scannetppv2
+  - /hydra/callbacks:
+      - gitsha
+  - paths: default
+  - extras: default
+  - visualizer: rerun
+  - _self_
+
+seed: 43
+
+add_tracks: False
+use_colmap_aligner: False
+use_masks: True

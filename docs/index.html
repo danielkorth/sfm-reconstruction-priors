@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Revisiting Structure from Motion with 3D Reconstruction Priors">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revisiting Structure from Motion with 3D Reconstruction Priors</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://danielkorth.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://sketch2shape.github.io">
+            Sketch2Shape
+          </a>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Revisiting Structure from Motion with 3D Reconstruction Priors</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://danielkorth.io">Daniel Korth</a>,</span>
+            <span class="author-block">
+              <a href="https://www.niessnerlab.org">Matthias Niessner</a></span>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Technical University of Munich</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="static/pdfs/report.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Report</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/danielkorth/sfm-reconstruction-priors"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Slides Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/slides.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/pipeline.png" alt="Teaser" height="100%">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      </br>
+      </br>
+      <h1 class="subtitle has-text-centered">
+        <b>tl;dr</b> We enhance global optimization (typically Bundle Adjustment) with 3D constraints from DUSt3R.
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Structure from Motion (SfM) has been a cornerstone of computer vision for decades, aiming to reconstruct 3D scene structure and camera parameters from 2D images.
+            Traditionally, this problem is broken into several subproblems - image matching, triangulation, and global optimization - typically relying on 2D keypoints and reprojection error.
+            Recently, 3D reconstruction models like DUSt3R have proven highly effective for a variety of 3D vision tasks.
+            These models, based on feed-forward neural networks, regress dense 3D pointmaps from pairs of images in a shared coordinate system.
+            In this work, we integrate modern 3D reconstruction priors into the incremental SfM pipeline.
+            We propose a novel optimization method that aligns 3D pointmaps with scene structure and incorporates them as additional constraints in the optimization process.
+            This allows us to enhance global optimization by combining both 2D keypoints and 3D pointmaps, resulting in improved robustness.
+            We evaluate our approach on indoor scenes and demonstrate that it outperforms the baseline pipeline that relies solely on 2D constraints from reprojection error in a shared coordinate system. In this work, we integrate modern 3D reconstruction priors into the incremental SfM pipeline.
+            We propose a novel optimization method that aligns 3D pointmaps with scene structure and incorporates them as additional constraints in the optimization process.
+            This allows us to enhance global optimization by combining both 2D keypoints and 3D pointmaps, resulting in improved robustness. We evaluate our approach on indoor scenes and demonstrate that it outperforms the baseline pipeline that relies solely on 2D constraints from reprojection error.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title">Method</h2>
+        <img src="./static/images/method.png" alt="Method" height="100%">
+        <div class="content has-text-justified">
+          <p>
+            Starting with an image collection, we match images to extract pairwise keypoint
+            constraints. We pass all pairwise images through our 3D reconstruction prior to extract pointmaps. Using the provided keypoint matches
+            (green), we extract the corresponding pointmap matches (orange). Next, we estimate a rigid alignment from the pointmap matches to their
+            corresponding scene structure (purple). This serves as initialization to our global optimization. Note: Gray points are for visualization
+            purposes only and are not used in the global optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{korth2025revisiting,
+  author    = {Korth, Daniel and Niessner, Matthias},
+  title     = {Revisiting Structure from Motion with 3D Reconstruction Priors},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="text-align: center;">
+          <p>
+            Website inspired by <a href="https://keunhong.com/">Keunhong Park</a>'s <a href="https://nerfies.github.io/">Nerfies website</a>.
+          </p>
+          <!-- <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
